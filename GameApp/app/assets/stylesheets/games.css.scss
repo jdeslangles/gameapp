@@ -1,0 +1,94 @@
+// Place all the styles related to the Games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+font-family:  helvetica;
+background-color: #C0DDF6;
+color: #FF3500;
+ background: image-url('background.jpg') repeat fixed;
+}
+
+.navbar a:hover,
+.navbar a:focus {
+color: #C0DDF6 !important;
+  // text-shadow: 0px 0px 20px #FF3500 !important;
+}
+
+
+.popup_login {
+margin: 20px 0 0 0;
+text-align: center;
+}
+
+th {
+  color: #0000FE;
+}
+
+body h3 {
+  margin: 20px 0 0 20px;
+  text-shadow: 0px 0px 20px #0000FE;
+  font-family: sketchrockwell;
+  color: white;
+}
+.container {
+margin-top: -150px;
+}
+
+.header {
+  // position: fixed;
+}
+.banner {
+  // position: absolute;
+  height: 170px;
+  width: auto;
+  position: scroll;
+  // background: image-url('banner.jpg') repeat top center fixed;
+  color: black;
+}
+
+h1 {
+  font-family: sketchrockwell;
+  text-shadow: 0px 0px 50px #0000FE;
+  font-size: 60px;
+  color: white;
+  padding: 0;
+  margin: 40px 20px 23px 20px;
+}
+
+.coolrecipe {
+  color: white;
+ background-color: #2c2c2c; /* fallback color, place your own */
+
+  /* Gradients for modern browsers, replace as you see fit */
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, #333333, #222222);
+  background-repeat: repeat-x;
+
+  /* IE8-9 gradient filter */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+  border: black solid 2px;
+  // border-radius: 10px;
+  box-shadow: 0px 0px 20px 3px #C0DDF6;
+  padding: 10px;
+  margin: 0 0 10px 0;
+}
+
+.movie {
+  min-height: 450px;
+}
+.coolmovie a, footer a{
+ color: #C0DDF6;
+ text-decoration: none;
+}
+.coolmovie a:hover, .coolrecipe a:focus, footer a:hover, footer a:focus{
+  color: #0000FE;
+}
+footer p {
+  margin-top: 170px;
+  padding: 20px 0 0 20px
+}

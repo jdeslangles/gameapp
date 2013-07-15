@@ -1,0 +1,19 @@
+<h3>Log in:</h3>
+<br>
+<div class="row">
+<div class="span5 offset1">
+  <div class ="coolrecipe">
+    <%= form_tag sessions_path do %>
+      <div class="field">
+        <%= label_tag :username %>
+        <%= text_field_tag :username, params[:username] %>
+      </div>
+      <div class="field">
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+      </div>
+      <div class="actions"><%= submit_tag "Log in" %></div>
+    <% end %>
+  </div>
+</div>
+</div>

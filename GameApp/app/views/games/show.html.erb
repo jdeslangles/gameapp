@@ -1,0 +1,20 @@
+<div class="span5 offset1">
+  <div class="coolrecipe">
+
+    <p id="notice"><%= notice %></p>
+
+<p>
+  <b>Game type:</b>
+  <%= @game.game_type_id %>
+</p>
+
+<p>
+  <b>Game result:</b>
+  <%= @game.game_result %>
+</p>
+
+</div>
+</div>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

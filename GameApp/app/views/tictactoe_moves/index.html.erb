@@ -1,0 +1,36 @@
+<h3>Listing tictactoe_moves</h3>
+<br>
+<div class="row">
+    <div class="span5 offset1">
+  <div class="coolrecipe">
+<table>
+  <tr>
+    <th>Game</th>
+    <th>Player</th>
+    <th>Move square</th>
+    <th>Symbol</th>
+    <th>Winning move</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tictactoe_moves.each do |tictactoe_move| %>
+  <tr>
+    <td><%= tictactoe_move.game_id %></td>
+    <td><%= tictactoe_move.player_id %></td>
+    <td><%= tictactoe_move.move_square %></td>
+    <td><%= tictactoe_move.symbol %></td>
+    <td><%= tictactoe_move.winning_move %></td>
+    <td><%= link_to 'Show', tictactoe_move %></td>
+    <td><%= link_to 'Edit', edit_tictactoe_move_path(tictactoe_move) %></td>
+    <td><%= link_to 'Destroy', tictactoe_move, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+</div>
+</div>
+<br />
+
+<%= link_to 'New Tictactoe move', new_tictactoe_move_path %>

@@ -1,0 +1,41 @@
+<h3>Our members:</h3>
+    <br>
+        <div class="row">
+            <div class="span8 offset1" >
+
+                <% @users.each do |user| %>
+                <div class="coolrecipe" >
+
+                <table class="table">
+                  <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Bio</th>
+                    <th>User picture</th>
+                    <th>User gender</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <td><%= user.first_name %></td>
+                    <td><%= user.last_name %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.bio %></td>
+                    <td><%= user.user_picture %></td>
+                    <td><%= user.user_gender %></td>
+                    <td><%= link_to 'Show', user %></td>
+                    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+            </table>
+        </div>
+    <% end %>
+</div>
+</div>
+<br />
+
+<%= link_to 'New User', new_user_path %>

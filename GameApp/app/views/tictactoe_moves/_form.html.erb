@@ -1,0 +1,44 @@
+<div class="span5 offset1">
+  <div class="coolrecipe">
+
+<%= form_for(@tictactoe_move) do |f| %>
+  <% if @tictactoe_move.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tictactoe_move.errors.count, "error") %> prohibited this tictactoe_move from being saved:</h2>
+
+      <ul>
+      <% @tictactoe_move.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :game_id %><br />
+    <%= f.number_field :game_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player_id %><br />
+    <%= f.number_field :player_id %>
+  </div>
+  <div class="field">
+    <%= f.label :move_square %><br />
+    <%= f.number_field :move_square %>
+  </div>
+  <div class="field">
+    <%= f.label :symbol %><br />
+    <%= f.text_field :symbol %>
+  </div>
+  <div class="field">
+    <%= f.label :winning_move %><br />
+    <%= f.text_field :winning_move %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+</div>
+</div>
+
