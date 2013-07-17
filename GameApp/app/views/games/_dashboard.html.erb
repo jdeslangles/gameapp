@@ -1,0 +1,89 @@
+<h1>Tic Tac Toe</h1>
+<div class="player-turn-marker"><%= turn(@game) %></div>
+<div class="player-1-turn player-display"><%= @game.users[0].username %>, select a square.</div>
+<div class="player-2-turn player-display"><%= @game.users[1].username %> is thinking...</div>
+</br>
+</br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>
+        <div class="center">Name</div>
+      </th>
+      <th>
+        <div class="center">Mark</div>
+      </th>
+      <th>
+        <div class="center">Win</div>
+      </th>
+      <th>
+        <div class="center">Lose</div>
+      </th>
+      <th>
+        <div class="center">Draw</div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="center">
+          <%= @game.users[0].username %>
+        </div>
+      </td>
+      <td>
+        <div class="center">
+          <%= image_tag "x.jpg", :size => "25x25" %>
+        </div>
+      </td>
+      <td>
+        <div class="center">
+          <%= @game.users[0].win %>
+        </div>
+      </td>
+      <td>
+        <div class="center">
+          <%= @game.users[0].lose %>
+        </div>
+      </td>
+      <td>
+        <div class="center">
+          <%= @game.users[0].draw %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="center">
+          <%= @game.users[1].username %>
+        </div>
+      </td>
+      <td>
+        <div class="center">
+          <%= image_tag "o.jpg", :size => "25x25" %>
+        </div>
+      </td>
+      <td>
+        <div class="center">
+          <%= @game.users[1].win %>
+        </div>
+      </td>
+      <td>
+        <div class="center">
+          <%= @game.users[1].lose %>
+        </div>
+      </td>
+      <td>
+        <div class="center">
+          <%= @game.users[1].draw %>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</br>
+
+<div class="cpu-move-marker"><%= computer_move(@game) %></div>
+
+
+

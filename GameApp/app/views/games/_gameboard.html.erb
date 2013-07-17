@@ -1,0 +1,62 @@
+<div class="coolrecipe">
+<table class="table table-bordered">
+  <tr>
+    <td>
+      <div class="center square0">
+        <%= link_to(image_tag(return_image(@game, 0), :size => "100x100"), "#") %>
+      </div>
+    </td>
+    <td>
+      <div class="center square1">
+        <%= link_to(image_tag(return_image(@game, 1), :size => "100x100"), "#") %>
+      </div>
+    </td>
+    <td>
+      <div class="center square2">
+        <%= link_to(image_tag(return_image(@game, 2), :size => "100x100"), "#") %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="center square3">
+        <%= link_to(image_tag(return_image(@game, 3), :size => "100x100"), "#") %>
+      </div>
+    </td>
+    <td>
+      <div class="center square4">
+        <%= link_to(image_tag(return_image(@game, 4), :size => "100x100"), "#") %>
+      </div>
+    </td>
+    <td>
+      <div class="center square5">
+        <%= link_to(image_tag(return_image(@game, 5), :size => "100x100"), "#") %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="center square6">
+        <%= link_to(image_tag(return_image(@game, 6), :size => "100x100"), "#") %>
+      </div>
+    </td>
+    <td>
+      <div class="center square7">
+        <%= link_to(image_tag(return_image(@game, 7), :size => "100x100"), "#") %>
+      </div>
+    </td>
+    <td>
+      <div class="center square8">
+        <%= link_to(image_tag(return_image(@game, 8), :size => "100x100"), "#") %>
+      </div>
+    </td>
+  </tr>
+</table>
+</div>
+
+
+<%= form_for(@game) do |f| %>
+  <%= f.fields_for :tictactoe_moves, @tictactoe_moves do |e| %>
+    <%= e.hidden_field :value %>
+  <% end %>
+<% end %>

@@ -1,30 +1,31 @@
 <h3>Listing games</h3>
 <br>
 <div class="row">
-  <div class="span5 offset1">
-  <div class="coolrecipe">
-<table>
-  <tr>
-    <th>Game type</th>
-    <th>Game result</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="span7 offset1">
+    <div class="coolrecipe">
+      <table class="table">
+        <tr>
+          <th>Game type</th>
+          <th>Game result</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
 
-<% @games.each do |game| %>
-  <tr>
-    <td><%= game.game_type_id %></td>
-    <td><%= game.game_result %></td>
-    <td><%= link_to 'Show', game %></td>
-    <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-</div>
-</div>
+      <% @games.each do |game| %>
+        <tr>
+          <td><%= game.game_type_id %></td>
+          <td><%= game.game_result %></td>
+          <td><%= link_to 'Show', game, class:"btn btn-info btn-mini" %></td>
+          <td><%= link_to 'Edit', edit_game_path(game), class:"btn btn-warning btn-mini" %></td>
+          <td><%= link_to 'Destroy', game, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
 </div>
 <br />
-
+<div class="links">
 <%= link_to 'New Game', new_game_path %>
+</div>

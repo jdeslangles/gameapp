@@ -1,6 +1,7 @@
 class Ability
   include CanCan::Ability
 
+
   def initialize(user)
     user ||= User.new
     if user.role? "admin"
@@ -11,6 +12,7 @@ class Ability
         can :read, :all
         can :create, User
     end
+
 
   end
 end

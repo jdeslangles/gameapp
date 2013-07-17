@@ -1,41 +1,45 @@
-<h3>Our members:</h3>
+<h3>Players</h3>
     <br>
         <div class="row">
-            <div class="span8 offset1" >
+            <div class="span10 offset1" >
 
                 <% @users.each do |user| %>
                 <div class="coolrecipe" >
 
                 <table class="table">
                   <tr>
-                    <th>First name</th>
-                    <th>Last name</th>
+                    <th>User picture</th>
                     <th>Username</th>
                     <th>Email</th>
-                    <th>Bio</th>
-                    <th>User picture</th>
-                    <th>User gender</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Draws</th>
                   </tr>
                   <tr>
-                    <td><%= user.first_name %></td>
-                    <td><%= user.last_name %></td>
+                    <td><%=image_tag user.user_picture.thumb.url, class: "img-circle"%></td>
                     <td><%= user.username %></td>
                     <td><%= user.email %></td>
-                    <td><%= user.bio %></td>
-                    <td><%= user.user_picture %></td>
-                    <td><%= user.user_gender %></td>
-                    <td><%= link_to 'Show', user %></td>
-                    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-                    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+                    <td>
+                        <%= (user.playings.select { |p| p.player_position == 1 }).count %>
+                    </td>
+                    <td>
+                         <%= (user.playings.select { |p| p.player_position == 2 }).count %>
+                    </td>
+                    <td>
+                         <%= (user.playings.select { |p| p.player_position == 0 }).count %>
+                    </td>
                   </tr>
-            </table>
-        </div>
+                </table>
+                    <div class="links"><%= link_to 'Show', user, class:"btn btn-info btn-mini" %>
+                    <%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning btn-mini" %>
+                    <%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></div>
+            </div>
+        <br>
+        <br>
     <% end %>
 </div>
 </div>
-<br />
-
-<%= link_to 'New User', new_user_path %>
+<div class="links">
+<%= link_to 'New User', new_user_path, class:"btn btn-success btn-mini" %>
+</div>

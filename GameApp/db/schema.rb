@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130714205818) do
+ActiveRecord::Schema.define(:version => 20130717110216) do
 
   create_table "games", :force => true do |t|
     t.integer  "game_type_id"
@@ -27,16 +27,19 @@ ActiveRecord::Schema.define(:version => 20130714205818) do
     t.integer  "finish_position"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "win"
+    t.integer  "lose"
+    t.integer  "draw"
   end
 
   create_table "tictactoe_moves", :force => true do |t|
     t.integer  "game_id"
-    t.integer  "player_id"
+    t.integer  "player_position"
     t.integer  "move_square"
     t.string   "symbol"
     t.string   "winning_move"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

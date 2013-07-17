@@ -1,0 +1,16 @@
+<%= form_for @user do |f| %>
+  <%= f.fields_for :users do |builder| %>
+    <div class="row">
+      <div class="span5">
+        </br>
+        <%= builder.text_field :username, :placeholder => "Type in name...", :class => 'player-input' %>
+        <%= builder.hidden_field :win, :value => 0 %>
+        <%= builder.hidden_field :lose, :value => 0 %>
+        <%= builder.hidden_field :draw, :value => 0 %>
+        <%= builder.hidden_field :first_to_act, :value => "true" %>
+      </div>
+    </div>
+  <% end %>
+  </br>
+  <p><%= f.submit "Create Player", class: "btn btn-large btn-primary" %></p>
+<% end %>

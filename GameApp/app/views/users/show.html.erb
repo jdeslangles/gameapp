@@ -1,44 +1,49 @@
-<div class="span5 offset1">
-  <div class="coolrecipe">
+<h3>My profile</h3>
+<br>
+<div class ="row">
+  <div class="span7 offset1">
+    <div class="coolrecipe">
 
-<p id="notice"><%= notice %></p>
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <b>First name:</b>
-  <%= @user.first_name %>
-</p>
+        <p class="links">
+          <%=image_tag@user.user_picture.detail.url, class: "img-circle"%>
+        </p>
 
-<p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
-</p>
+        <p>
+          <b>First name:</b><br>
+          <%= @user.first_name %>
+        </p>
 
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
+        <p>
+          <b>Last name:</b><br>
+          <%= @user.last_name %>
+        </p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+        <p>
+          <b>Username:</b><br>
+          <%= @user.username %>
+        </p>
 
-<p>
-  <b>Bio:</b>
-  <%= @user.bio %>
-</p>
+        <p>
+          <b>Email:</b><br>
+          <%= @user.email %>
+        </p>
 
-<p>
-  <b>User picture:</b>
-  <%= @user.user_picture %>
-</p>
+        <p>
+          <b>Bio:</b><br>
+          <%= @user.bio %>
+        </p>
 
-<p>
-  <b>User gender:</b>
-  <%= @user.user_gender %>
-</p>
+        <p>
+          <b>User gender:</b><br>
+          <%= @user.user_gender %>
+        </p>
 
+        <div class="links">
+        <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-warning btn-mini" %>
+        <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
+        </div>
+    </div>
+  </div>
 </div>
-</div>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

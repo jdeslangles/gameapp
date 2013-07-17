@@ -1,6 +1,50 @@
-<h3>New game</h3>
+<h3>Welcome to G.A.MES</h3>
+<h3>Play TicTacToe?</h3>
+<div class="center">
+  <div class="row">
+    <div class="span5 offset1">
+        <br>
+          <p>Select your opponent!</p>
+            <br>
+            <%= form_tag games_path, method: :post %>
+              <%=
+                  select_tag "user_id", options_from_collection_for_select(User.all, "id", "username")
+                %>
+            <br>
+            <%= submit_tag "create Game !", class:"btn btn-success btn-large" %>
+    </div>
+  </div>
+</div>
+
+      <!--
+      < %= button_to "Start Game!", {:action => :create}, :method => :post, :class => 'btn btn-large btn-primary' %>
+    </div>
+    <div class="span4 offset1">
+      < %= render 'shared/emptyboard' %>
+    </div>
+    <div class="span1">
+    </div>
+  </div>
+</div>
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h3>New game</h3>
 <br>
 <div class="row">
-<%= render 'form' %>
+< %= render 'form' %>
 </div>
-<%= link_to 'Back', games_path %>
+< %= link_to 'Back', games_path %> -->

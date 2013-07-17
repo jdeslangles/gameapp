@@ -3,20 +3,28 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.all
+    @users = User.order(:username)
   end
+
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def my_profile
+    @user = current_user
+    render :show
   end
 
   def new
     @user = User.new
   end
 
+
   def edit
     @user = User.find(params[:id])
   end
+
 
   def create
     @user = User.new(params[:user])
@@ -27,6 +35,7 @@ class UsersController < ApplicationController
   end
   end
 
+
   def update
     @user = User.find(params[:id])
      if @user.update_attributes(params[:user])
@@ -35,6 +44,7 @@ class UsersController < ApplicationController
      render action: 'edit'
     end
   end
+
 
   def destroy
     @user = User.find(params[:id])
