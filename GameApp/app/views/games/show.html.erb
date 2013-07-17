@@ -11,11 +11,16 @@
               <% c.each do |grid_case| %>
                  <td>
                       <% if  is_player_playing(@game, current_user) %>
-                        <%= link_to grid_case, game_tictactoe_moves_path(@game), method: :post %>
+                        <% result = x_or_o(@game, grid_case)  %>
+                        <% if result  %>
+                          <%= result  %>
+                        <% else %>
+                          <%= link_to "+", game_tictactoe_moves_path(@game, case: grid_case), method: :post %>
+                        <% end %>
                       <% else%>
-                        <%= grid_case %>
+                        <%= x_or_o(@game, grid_case) %>
                       <% end%>
-                  <td>
+                  </td>
               <% end%>
             </tr>
         <% end %>

@@ -1,11 +1,12 @@
 class TictactoeMovesController < ApplicationController
 
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
 
   def create
         player_position = Playing.find_player_position params[:game_id], current_user.id
-        @tictactoe = TictactoeMove.new(game_id: params[:game_id], player_position: current_user.id, player_position: player_position)
+        @tictactoe = TictactoeMove.create(game_id: params[:game_id],  player_position: player_position, move_square: params[:case])
+        redirect_to game_path params[:game_id]
   end
 
 
