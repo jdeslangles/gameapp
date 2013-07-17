@@ -5,7 +5,7 @@ module GamesHelper
     moves = game.tictactoe_moves
     return true if moves.empty?
     player_position= game.playings.where(user_id: user.id).last
-    puts "#{moves.last.player_position} != #{player_position.player_position}"
+    puts player_position
     moves.last.player_position != player_position.player_position
   end
 

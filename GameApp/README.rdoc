@@ -2,3 +2,4 @@
 
 * remove symbol from tictactoe_moves
 * remove win, loose, draw from playings
+* current user shouldn't be able to create a game with himself
