@@ -1,5 +1,8 @@
 <h3>Game - TicTacToe mode: ON</h3>
 
+<%if flash[:notice] %>
+  <h1><%= flash[:notice] %></h1>
+<% end %>
 <div class="center">
   <div class="row">
     <div class="span5 offset1">

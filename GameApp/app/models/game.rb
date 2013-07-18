@@ -1,3 +1,5 @@
+class GameFinished < StandardError; end
+
 class Game < ActiveRecord::Base
   WINNING_LINES = [ [0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6] ]
   has_many :playings
@@ -20,20 +22,29 @@ def self.create_for_players(game_player1_id, game_player2_id)
 
   def is_computer_playing?
     values = self.playings.select{ |playing| playing.user_id == User.computer_id }
-    puts values
     !values.empty?
   end
 
-  def record_new_move params, user
-    player_position = Playing.find_player_position params[:game_id], user.id
-    tictactoe = TictactoeMove.create(game_id: params[:game_id],  player_position: player_position, move_square: params[:case])
-    game_over if game_finished?
-    self
+  def record_new_move square_case, user
+    player_position = playings.where(user_id: user.id).first.player_position
+    puts "square_case #{square_case}"
+    tictactoe = tictactoe_moves.create(player_position: player_position, move_square: square_case)
+    if game_finished?
+      game_over
+      true
+    end
+    false
   end
 
-  def record_and_create_new_move params, user
+  def record_and_create_new_move square_case, user
+    record_new_move square_case, user
     move = computer_move_valid
-    #binding.pry
+    if move
+      computer_user = User.find User.computer_id
+      record_new_move move, computer_user
+    else
+      true
+    end
   end
 
   def moves_made_array
@@ -45,16 +56,19 @@ def self.create_for_players(game_player1_id, game_player2_id)
   end
 
 
-def computer_move; (1..8).to_a.sample; end
-#move computer_move_valid into model and call for human or computer
+  def computer_move; (1..8).to_a.sample; end
 
   def computer_move_valid
-    current_moves = moves_made_array
-    while !current_moves[computer_move].nil?
-      computer_move
-    end
-    computer_move
+    ((0..8).to_a - tictactoe_moves.map{ |m| m.move_square}).sample
   end
+
+  # def computer_move_valid
+  #   current_moves = moves_made_array
+  #   while !current_moves[computer_move].nil?
+  #     computer_move
+  #   end
+  #   computer_move
+  # end
 
 
   def make_move
@@ -102,7 +116,6 @@ def computer_move; (1..8).to_a.sample; end
 
 
   def game_over
-    puts "in game over"
     if winning_game?
       last_player = which_players_turn
       self.update_attribute :game_result,  "Win"
@@ -114,12 +127,14 @@ def computer_move; (1..8).to_a.sample; end
       loser = self.playings.select{ |playing| playing.user_id!=winner.user_id}.first
       loser.update_attribute(:finish_position, 2)
       loser.save
+      raise GameFinished
     else
       #Update Game table with draw
       self.game_result = "Draw"
       self.playings..each do |playing|
         playing.update_attribute(:finish_position, 0)
       end
+      raise GameFinished
     end
   end
 
