@@ -7,57 +7,59 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="banner">
-  </div>
-  <div class="container">
-    <div class="header">
-      <div class="row">
-
-
-        <div class="span9">
-          <h1><img id="logo" src="../assets/Logo.png"></h1>
-        </div>
-        <div class="popup_login span3">
-            <% if current_user %>
-              <div class="logged-in">
-                <%=image_tag current_user.user_picture.thumb.url, class: "img-circle"%>
-                Logged in as <%= current_user.username %>
-              </div>
-            <% end %>
-        </div>
-      </div>
-
-      <div class="navbar navbar-inverse">
-        <nav class="navbar-inner">
-          <ul class ="nav">
-            <li class="active"><%= link_to("Home", new_game_path) %></li>
-            <li><%= link_to("New Game", new_game_path ) %></li>
-            <li><%= link_to("Load Game", games_path) %></li>
-            <li><%= link_to('Players', users_path)  %></li>
-            <li><%= link_to('Leaderboard', users_path)  %></li>
-            <% if current_user %>
-              <li><%= link_to('My profile', my_profile_path) %></li>
-            <% end %>
-            <% unless current_user %>
-              <li><%= link_to('Sign up', new_user_path)  %></li>
-            <% end %>
-            <li><% if current_user %><%= link_to 'Logout', session_path(session), method: :delete, data: { confirm: 'Are you sure?' } %>
-              <% else %>
-                <%= link_to 'Login', login_path %>
-              <% end %>
-            </li>
-          </ul>
-        </nav>
-      </div>
+  <div class="banner">
     </div>
+    <div class="container">
+      <div class="header">
+        <div class="row">
 
-<!-- <div class="span8 offset1">
-  < % flash.each do |key, value| %>
-    < %= content_tag(:div, value, class: "alert alert-#{key}") %>
-  < % end %>
-</div> -->
 
-<%= yield %>
-</div>
+          <div class="span9">
+            <h1><img id="logo" src="../assets/Logo.png"></h1>
+          </div>
+          <div class="popup_login span3">
+              <% if current_user %>
+                <div class="logged-in">
+                  <%=image_tag current_user.user_picture.thumb.url, class: "img-circle"%>
+                  Logged in as <%= current_user.username %>
+                </div>
+              <% end %>
+          </div>
+        </div>
+
+        <div class="navbar navbar-inverse">
+          <nav class="navbar-inner">
+            <ul class ="nav">
+              <li class="active"><%= link_to("PLAY", new_game_path) %></li>
+              <li><%= link_to("View Games", games_path) %></li>
+              <li><%= link_to('Players', users_path)  %></li>
+              <li><%= link_to('Leaderboard', users_path)  %></li>
+              <% if current_user %>
+                <li><%= link_to('My Profile', my_profile_path) %></li>
+              <% end %>
+              <% unless current_user %>
+                <li><%= link_to('Sign up', new_user_path)  %></li>
+              <% end %>
+              <li><% if current_user %><%= link_to 'Logout', session_path(session), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% else %>
+                  <%= link_to 'Login', login_path %>
+                <% end %>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+  <!-- <div class="span8 offset1">
+    < % flash.each do |key, value| %>
+      < %= content_tag(:div, value, class: "alert alert-#{key}") %>
+    < % end %>
+  </div> -->
+
+  <%= yield %>
+  </div>
+  <div class="footer">
+    © JDeslangles 2013 -- Many thanks to the Team TacToe for their contribution to this web app!
+  </div>
 </body>
 </html>

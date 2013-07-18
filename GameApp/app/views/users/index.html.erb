@@ -1,50 +1,55 @@
 <h3>Players</h3>
-    <br>
-        <div class="row">
-            <div class="span10 offset1" >
+<br>
+<br>
+    <div class="row">
+        <div class="span10 offset1" >
 
-                <% @users.each do |user| %>
-                <div class="coolrecipe" >
+            <% @users.each do |user| %>
+            <div class="coolrecipe" >
 
-                <table class="table">
-                  <tr>
-                    <th>User picture</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Draws</th>
-                  </tr>
-                  <tr>
-                    <td><%=image_tag user.user_picture.thumb.url, class: "img-circle"%></td>
-                    <td><%= user.username %></td>
-                    <td><%= user.email %></td>
+            <table class="table">
+              <tr>
+                <th>User picture</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Draws</th>
+              </tr>
+              <tr>
+                <td><%=image_tag user.user_picture.thumb.url, class: "img-circle"%></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
 
-                    <td>
-                        <%= (user.playings.select { |p| p.player_position == 1 }).count %>
-                    </td>
-                    <td>
-                         <%= (user.playings.select { |p| p.player_position == 2 }).count %>
-                    </td>
-                    <td>
-                         <%= (user.playings.select { |p| p.player_position == 0 }).count %>
-                    </td>
-                  </tr>
-                </table>
-                    <div class="links"><%= link_to 'Show', user, class:"btn btn-info btn-mini" %>
-                    <% if can? :edit, user %>
-                        <%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning btn-mini" %>
-                    <% end %>
-                    <% if can? :destroy, user %>
-                        <%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
-                    <% end %>
-                </div>
+                <td>
+                    <%= (user.playings.select { |p| p.player_position == 1 }).count %>
+                </td>
+                <td>
+                     <%= (user.playings.select { |p| p.player_position == 2 }).count %>
+                </td>
+                <td>
+                     <%= (user.playings.select { |p| p.player_position == 0 }).count %>
+                </td>
+              </tr>
+            </table>
+                <div class="links"><%= link_to 'View', user, class:"btn btn-info btn-mini" %>
+                <% if can? :edit, user %>
+                    <%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning btn-mini" %>
+                <% end %>
+                <% if can? :destroy, user %>
+                    <%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
             </div>
-        <br>
-        <br>
-    <% end %>
+        </div>
+    <br>
+    <br>
+<% end %>
 </div>
 </div>
 <div class="links">
-<%= link_to 'New User', new_user_path, class:"btn btn-success btn-mini" %>
+<%= link_to 'New User', new_user_path, class:"btn btn-success btn-large" %>
 </div>
+<br>
+<br>
+<br>
+<br>

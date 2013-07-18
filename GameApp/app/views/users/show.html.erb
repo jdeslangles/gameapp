@@ -1,54 +1,48 @@
 <h3>My profile</h3>
 <br>
+<br>
 <div class ="row">
-  <div class="span7 offset1">
+  <div class="span6 offset3">
     <div class="coolrecipe">
 
         <p id="notice"><%= notice %></p>
-
         <p class="links">
           <%=image_tag@user.user_picture.detail.url, class: "img-circle"%>
         </p>
-
         <p>
-          <b>First name:</b><br>
+          <b>First name</b><br>
           <%= @user.first_name %>
         </p>
-
         <p>
-          <b>Last name:</b><br>
+          <b>Last name</b><br>
           <%= @user.last_name %>
         </p>
-
         <p>
-          <b>Username:</b><br>
+          <b>Username</b><br>
           <%= @user.username %>
         </p>
-
         <p>
-          <b>Email:</b><br>
+          <b>Email</b><br>
           <%= @user.email %>
         </p>
-
         <p>
-          <b>Bio:</b><br>
+          <b>Bio</b><br>
           <%= @user.bio %>
         </p>
-
         <p>
-          <b>User gender:</b><br>
+          <b>User gender</b><br>
           <%= @user.user_gender %>
         </p>
-
         <div class="links">
-
         <% if can? :edit, @user %>
           <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-warning btn-mini" %>
         <% end %>
-
         <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
-
         </div>
     </div>
   </div>
 </div>
+<br>
+<br>
+<br>
+<br>

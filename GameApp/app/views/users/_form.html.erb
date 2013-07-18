@@ -11,7 +11,7 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :user_picture%>
+    <%= f.label :Avatar%>
     <%= f.file_field :user_picture%>
   </div>
   <div class="field">
@@ -47,7 +47,7 @@
   </div>
   <div class="links">
     <%= f.submit 'Submit', class: "btn btn-success btn-mini" %>
-    <%= link_to 'Show', @user, class:"btn btn-info btn-mini" %>
+    <%= link_to 'View', @user, class:"btn btn-info btn-mini" %>
     <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
   </div>
 <% end %>

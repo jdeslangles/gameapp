@@ -4,33 +4,34 @@
 <div class="center">
   <div class="row">
     <div class="span5 offset1">
-      <div class="coolrecipe links">
+      <div class="coolrecipe links frontpage-div">
             <h3>Single Player</h3>
-            <p>Select your opponent!</p>
+            <p>Our computer is smarter than you.</p>
               <br>
+              <img src="/assets/GladOS.jpg" class="img-frontpage img-circle">
+              <br>
+              <br><br>
               <%= form_tag games_path, method: :post do %>
-                  <%=
-                      select_tag "user_id", options_from_collection_for_select(User.all, "id", "username")
-                    %>
-                <br>
-                <%= submit_tag "Challenge Computer!", class:"btn btn-success btn-large" %>
-              <%= form_tag games_path, method: :post %>
+                <%= submit_tag "Challenge Computer!", class:"btn-success btn btn-large" %>
               <% end %>
         </div>
     </div>
     <div class="span5">
-      <div class="coolrecipe links">
+      <div class="coolrecipe links frontpage-div">
       <h3>Player vs. Player</h3>
         <p>Select your opponent!</p>
-          <br>
+          <img src="/assets/pvp.png" class="img-frontpage">
           <%= form_tag games_path, method: :post do %>
             <%=
                 select_tag "user_id", options_from_collection_for_select(User.all, "id", "username")
               %>
-          <br>
+          <br><br>
           <%= submit_tag "Challenge Player!", class:"btn btn-success btn-large" %>
           <% end %>
       </div>
     </div>
   </div>
 </div>
+<br>
+<br><br>
+<br>

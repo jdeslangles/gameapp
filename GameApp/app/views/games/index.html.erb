@@ -1,29 +1,44 @@
-<h3>Listing games</h3>
+<h3>Past & current games</h3>
+<br>
 <br>
 <div class="row">
-  <div class="span7 offset1">
+  <div class="span8">
     <div class="coolrecipe">
       <table class="table">
         <tr>
+          <th></th>
+          <th>Status</th>
+          <th>Winner</th>
           <th>Player 1</th>
           <th>Player 2</th>
-          <th>Status</th>
           <th></th>
-          <th></th>
-          <th></th>
+          <% if can? :destroy, @game %>
+            <th></th>
+          <% end %>
         </tr>
 
       <% @games.each do |game| %>
         <tr>
-          <td><%= game_player_name(game, 0) %></td>
-          <td><%= game_player_name(game, 1) %></td>
+          <td><% if game.game_result %>
+                    <img src="assets/star.png", class="img-tiny">
+                    <% end %>
+          </td>
           <td><%= if game.game_result
                               game.game_result
                             else
                               "Ongoing"
-                            end %></td>
-          <td><%= link_to 'Show', game, class:"btn btn-info btn-mini" %></td>
-          <td><%= link_to 'Edit', edit_game_path(game), class:"btn btn-warning btn-mini" %></td>
+                            end %>
+          </td>
+          <td><%= game_player_win?(game, 1) %></td>
+          <td><%= game_player_name(game, 0) %></td>
+          <td><%= game_player_name(game, 1) %></td>
+          <td>
+              <% unless game.game_result %>
+                <% if session[:user_id] == game.playings[0].user_id or session[:user_id] == game.playings[1].user_id %>
+                  <%= link_to 'Join!', game, class:"btn btn-info btn-mini" %>
+                <% end %>
+              <% end %>
+            </td>
           <% if can? :destroy, game %>
             <td><%= link_to 'Destroy', game, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
@@ -32,8 +47,26 @@
       </table>
     </div>
   </div>
+  <div class="span3 offset1">
+    <div class="coolrecipe">
+        <h3>- Stats -</h3>
+        <br>
+        <b>Games (total)</b>
+        <p><%=Game.count %></p>
+        <b>Open games</b>
+        <p><%=Game.where(game_result:nil).count %></p>
+        <b>Players</b>
+         <p><%=User.count %></p>
+    </div>
+  </div>
+
 </div>
-<br />
+<br>
+<br>
 <div class="links">
-<%= link_to 'New Game', new_game_path %>
+<%= link_to 'New Game', new_game_path, class:"btn btn-success btn-large" %>
 </div>
+<br>
+<br>
+<br>
+<br>

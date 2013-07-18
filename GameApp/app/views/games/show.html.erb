@@ -1,15 +1,26 @@
-<h3>Game - TicTacToe mode: ON</h3>
-
-<%if flash[:notice] %>
-  <h1><%= flash[:notice] %></h1>
-<% end %>
-
+<h3>Playing mode: ON!</h3>
 <div class="center">
+  <%if flash[:notice] %>
+    <h1><%= flash[:notice] %></h1>
+  <% end %>
+  <br>
+  <br>
+
+
   <div class="row">
-    <div class="span5 offset1">
-      <br>
-      <br>
-        <table id="tictactoe_grid">
+    <div class="span3">
+      <div class ="coolrecipe links">
+        <h3>Player 1</h3>
+        <p class="links"><%=image_tag game_player_image(@game, 0), class: "img-circle img-match"%></p>
+        <br>
+         <a href="mailto:<%= @game.users[0].email %>", class= "btn btn-danger btn-small">NUDGE</a>
+      </div>
+    </div>
+
+
+    <div class="span4 offset1">
+      <div class = "tictactoe">
+        <table id="tictactoe_grid" class="links">
           <% [[0,1,2], [3,4,5], [6,7,8]].each do |c| %>
             <tr>
               <% c.each do |grid_case| %>
@@ -19,7 +30,7 @@
                         <% if result  %>
                           <%= result  %>
                         <% else %>
-                          <%= link_to "+", game_tictactoe_moves_path(@game, case: grid_case), method: :post %>
+                          <%= link_to "?", game_tictactoe_moves_path(@game, case: grid_case), method: :post %>
                         <% end %>
                       <% else%>
                         <%= x_or_o(@game, grid_case) %>
@@ -27,9 +38,31 @@
                   </td>
               <% end%>
             </tr>
-        <% end %>
-
+          <% end %>
         </table>
+        <br>
+        <br>
+        <br>
+        <p><u>INSTRUCTIONS:</u> <em>click on the "?", then refresh the page until Player 2 has made its move.</em></p>
+        <br>
+        <p>Did you know? You can send a note to your opponent to remind them it is their turn: just NUDGE them a little :)</p>
+      </div>
     </div>
+
+
+    <div class="span3 offset1">
+      <div class ="coolrecipe links">
+        <h3>Player 2</h3>
+        <p class="links"><%=image_tag game_player_image(@game, 1), class: "img-circle img-match"%></p>
+        <br>
+        <a href="mailto:<%= @game.users[1].email %>", class= "btn btn-danger btn-small">NUDGE</a>
+      </div>
+    </div>
+
+
   </div>
 </div>
+<br>
+<br>
+<br>
+<br>

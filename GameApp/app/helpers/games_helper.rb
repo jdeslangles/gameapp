@@ -4,6 +4,16 @@ module GamesHelper
     game.users[player_position].try(:username)
   end
 
+  def game_player_image(game, player_position)
+    game.users[player_position].try(:user_picture)
+  end
+
+  def game_player_win?(game, finish_position)
+    if game.game_result
+      game.users[finish_position].try(:username)
+    end
+  end
+
   def is_player_playing game, user
     moves = game.tictactoe_moves
     return true if moves.empty?
