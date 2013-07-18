@@ -12,7 +12,7 @@ GameApp::Application.routes.draw do
 
   get '/login', to: 'sessions#new'
 
-  root to: 'users#index'
+  root to: 'games#new'
 
 end
 

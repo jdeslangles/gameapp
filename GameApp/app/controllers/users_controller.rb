@@ -29,7 +29,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-    redirect_to @user, notice: 'Your avatar was successfully created - play time!'
+      UserMailer.registration_confirmation(@user).deliver
+      @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to root_url, notice: "You're now logged In and your avatar was successfully created - play time!"
     else
     render 'new'
   end

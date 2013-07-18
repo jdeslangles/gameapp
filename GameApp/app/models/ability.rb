@@ -8,9 +8,15 @@ class Ability
         can :manage, :all
     # elsif user.role? "another"
     #     can :manage, :all
-    else
+    elsif user.role? "user"
         can :read, :all
         can :create, User
+        can :edit, User do |u|
+          u.id == user.id
+        end
+        can [:read, :create], Game
+    else
+      can :create, User
     end
 
 

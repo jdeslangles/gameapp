@@ -12,8 +12,13 @@
         <%= label_tag :password %>
         <%= password_field_tag :password %>
       </div>
-      <div class="actions"><%= submit_tag "Log in" %></div>
+      <div class="actions"><%= submit_tag "Log in", class:"btn btn-info btn-large" %></div>
     <% end %>
+    <br>
+    <br>
+      <div>
+        First time visiting us? <%= link_to('Sign up!', new_user_path, class:"btn btn-success btn-mini")  %>
+      </div>
   </div>
 </div>
 </div>

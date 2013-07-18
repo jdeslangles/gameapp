@@ -32,8 +32,13 @@
                   </tr>
                 </table>
                     <div class="links"><%= link_to 'Show', user, class:"btn btn-info btn-mini" %>
-                    <%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning btn-mini" %>
-                    <%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                    <% if can? :edit, user %>
+                        <%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning btn-mini" %>
+                    <% end %>
+                    <% if can? :destroy, user %>
+                        <%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                </div>
             </div>
         <br>
         <br>

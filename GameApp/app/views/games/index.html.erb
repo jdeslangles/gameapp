@@ -5,8 +5,9 @@
     <div class="coolrecipe">
       <table class="table">
         <tr>
-          <th>Game type</th>
-          <th>Game result</th>
+          <th>Player 1</th>
+          <th>Player 2</th>
+          <th>Status</th>
           <th></th>
           <th></th>
           <th></th>
@@ -14,11 +15,18 @@
 
       <% @games.each do |game| %>
         <tr>
-          <td><%= game.game_type_id %></td>
-          <td><%= game.game_result %></td>
+          <td><%= game_player_name(game, 0) %></td>
+          <td><%= game_player_name(game, 1) %></td>
+          <td><%= if game.game_result
+                              game.game_result
+                            else
+                              "Ongoing"
+                            end %></td>
           <td><%= link_to 'Show', game, class:"btn btn-info btn-mini" %></td>
           <td><%= link_to 'Edit', edit_game_path(game), class:"btn btn-warning btn-mini" %></td>
-          <td><%= link_to 'Destroy', game, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if can? :destroy, game %>
+            <td><%= link_to 'Destroy', game, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
       </table>
