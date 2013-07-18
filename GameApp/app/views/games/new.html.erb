@@ -3,29 +3,32 @@
 <div class="center">
   <div class="row">
     <div class="span5 offset1">
-      <div class="coolrecipe">
+      <div class="coolrecipe links">
             <h3>Single Player</h3>
             <p>Select your opponent!</p>
               <br>
+              <%= form_tag games_path, method: :post do %>
+                  <%=
+                      select_tag "user_id", options_from_collection_for_select(User.all, "id", "username")
+                    %>
+                <br>
+                <%= submit_tag "create Game !", class:"btn btn-success btn-large" %>
               <%= form_tag games_path, method: :post %>
-                <%=
-                    select_tag "user_id", options_from_collection_for_select(User.all, "id", "username")
-                  %>
-              <br>
-              <%= submit_tag "create Game !", class:"btn btn-success btn-large" %>
+              <% end %>
         </div>
     </div>
     <div class="span5">
-      <div class="coolrecipe">
+      <div class="coolrecipe links">
       <h3>Player vs. Player</h3>
         <p>Select your opponent!</p>
           <br>
-          <%= form_tag games_path, method: :post %>
+          <%= form_tag games_path, method: :post do %>
             <%=
                 select_tag "user_id", options_from_collection_for_select(User.all, "id", "username")
               %>
           <br>
           <%= submit_tag "create Game !", class:"btn btn-success btn-large" %>
+          <% end %>
       </div>
     </div>
   </div>

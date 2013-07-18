@@ -6,12 +6,11 @@ class Ability
     user ||= User.new
     if user.role? "admin"
         can :manage, :all
-    # elsif user.role? "another"
-    #     can :manage, :all
+
     elsif user.role? "user"
         can :read, :all
         can :create, User
-        can :edit, User do |u|
+        can [:my_profile, :edit, :update], User do |u|
           u.id == user.id
         end
         can [:read, :create], Game

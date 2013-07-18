@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :games, through: :playings
 
   before_save :ensure_has_role
+
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true
 
@@ -19,7 +20,13 @@ mount_uploader :user_picture, UserPictureUploader
 
 
   def ensure_has_role
-    self.role = "user" if self.role == nil
+    self.role ||= "user"
+    # self.role = "user" if self.role == nil
+  end
+
+  def self.computer_id
+    user_object = where(username: "Computer" ).first
+    user_object.id if user_object
   end
 end
 

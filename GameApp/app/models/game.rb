@@ -18,6 +18,23 @@ def self.create_for_players(game_player1_id, game_player2_id)
     @current_game=(params[:id])
   end
 
+  def is_computer_playing?
+    values = self.playings.select{ |playing| playing.user_id == User.computer_id }
+    puts values
+    !values.empty?
+  end
+
+  def record_new_move params, user
+    player_position = Playing.find_player_position params[:game_id], user.id
+    tictactoe = TictactoeMove.create(game_id: params[:game_id],  player_position: player_position, move_square: params[:case])
+    game_over if game_finished?
+    self
+  end
+
+  def record_and_create_new_move params, user
+    move = computer_move_valid
+    #binding.pry
+  end
 
   def moves_made_array
     a = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
@@ -28,18 +45,30 @@ def self.create_for_players(game_player1_id, game_player2_id)
   end
 
 
+def computer_move; (1..8).to_a.sample; end
+#move computer_move_valid into model and call for human or computer
+
+  def computer_move_valid
+    current_moves = moves_made_array
+    while !current_moves[computer_move].nil?
+      computer_move
+    end
+    computer_move
+  end
+
+
   def make_move
     unless game_finished?
       which_players_turn
-      game_moves
+      # game_moves
       if @current_moves.include?(move_square)
-        #return to move path with error message "That move is not valid"
       else
         player_symbol
         TictactoeMove.create game_id:@current_game, player_id:@current_player, move_square:move_square, symbol:@symbol
       end
     end
   end
+
 
   def player_symbol
       if @current_player == 1
@@ -48,6 +77,7 @@ def self.create_for_players(game_player1_id, game_player2_id)
         @symbol="O"
     end
   end
+
 
   def which_players_turn
     if tictactoe_moves.map {|x|x.move_square}.empty?

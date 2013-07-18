@@ -4,14 +4,14 @@ class TictactoeMovesController < ApplicationController
 
 
   def create
-        player_position = Playing.find_player_position params[:game_id], current_user.id
-        @tictactoe = TictactoeMove.create(game_id: params[:game_id],  player_position: player_position, move_square: params[:case])
-
-        @game = Game.find params[:game_id]
-        if @game.game_finished?
-          @game.game_over
-        end
-        redirect_to game_path params[:game_id]
+      @game = Game.find params[:game_id]
+      puts @game.is_computer_playing?
+      if  @game.is_computer_playing?
+        @game.record_and_create_new_move params, current_user
+      else
+        @game.record_new_move params, current_user
+      end
+      redirect_to game_path params[:game_id]
   end
 
 
