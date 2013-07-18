@@ -55,21 +55,11 @@ def self.create_for_players(game_player1_id, game_player2_id)
     a
   end
 
-
   def computer_move; (1..8).to_a.sample; end
 
   def computer_move_valid
     ((0..8).to_a - tictactoe_moves.map{ |m| m.move_square}).sample
   end
-
-  # def computer_move_valid
-  #   current_moves = moves_made_array
-  #   while !current_moves[computer_move].nil?
-  #     computer_move
-  #   end
-  #   computer_move
-  # end
-
 
   def make_move
     unless game_finished?
@@ -83,7 +73,6 @@ def self.create_for_players(game_player1_id, game_player2_id)
     end
   end
 
-
   def player_symbol
       if @current_player == 1
         @symbol="X"
@@ -91,7 +80,6 @@ def self.create_for_players(game_player1_id, game_player2_id)
         @symbol="O"
     end
   end
-
 
   def which_players_turn
     if tictactoe_moves.map {|x|x.move_square}.empty?
@@ -101,11 +89,9 @@ def self.create_for_players(game_player1_id, game_player2_id)
     end
   end
 
-
   def game_finished?
     winning_game? || moves_made_array.all?
   end
-
 
   def winning_game?
     WINNING_LINES.detect do |winning_line|
@@ -114,13 +100,12 @@ def self.create_for_players(game_player1_id, game_player2_id)
     end
   end
 
-
   def game_over
     if winning_game?
       last_player = which_players_turn
       self.update_attribute :game_result,  "Win"
 
-      #Update playingsg table for each user with result
+      #Update playings table for each user with result
       winner = self.playings.where(player_position:last_player).first
       winner.update_attribute(:finish_position, 1)
       winner.save

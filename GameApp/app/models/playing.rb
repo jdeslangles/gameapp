@@ -9,5 +9,4 @@ class Playing < ActiveRecord::Base
     self.where(game_id: game_id, user_id: user_id).first.player_position
   end
 
-
 end

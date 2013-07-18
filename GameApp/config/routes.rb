@@ -1,15 +1,13 @@
 GameApp::Application.routes.draw do
 
-  resources :users
   resources :games do
     resources :tictactoe_moves
   end
   resources :playings
+  resources :sessions, only: [:create, :destroy]
+  resources :users
 
   get '/my_profile', to: 'users#my_profile', as: :my_profile
-
-  resources :sessions, only: [:create, :destroy]
-
   get '/login', to: 'sessions#new'
 
   root to: 'games#new'

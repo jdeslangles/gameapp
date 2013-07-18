@@ -1,11 +1,8 @@
 module GamesHelper
 
-
-def game_player_name(game, player_position)
-  game.users[player_position].try(:username)
-end
-
-
+  def game_player_name(game, player_position)
+    game.users[player_position].try(:username)
+  end
 
   def is_player_playing game, user
     moves = game.tictactoe_moves
@@ -14,7 +11,6 @@ end
     puts player_position
     moves.last.player_position != player_position.player_position
   end
-
 
   def x_or_o game, square
     move = game.tictactoe_moves.where(move_square: square).first

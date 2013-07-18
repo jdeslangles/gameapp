@@ -3,13 +3,14 @@
 <%if flash[:notice] %>
   <h1><%= flash[:notice] %></h1>
 <% end %>
+
 <div class="center">
   <div class="row">
     <div class="span5 offset1">
       <br>
       <br>
         <table id="tictactoe_grid">
-        <% [[0,1,2], [3,4,5], [6,7,8]].each do |c| %>
+          <% [[0,1,2], [3,4,5], [6,7,8]].each do |c| %>
             <tr>
               <% c.each do |grid_case| %>
                  <td>
@@ -32,106 +33,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- <h3>Tic Tac Toe Results</h3>
-      <div class="player-winner-marker">< %= p_winner(@game) %></div>
-      <div class="player-1-winner player-display">
-        Congratulations <strong>< %= current_user.username if current_user.username %></strong>, you win!
-      </div>
-      <div class="player-2-winner player-display">
-        Sorry, <strong>< %= @game.users[1].username %></strong> wins.
-      </div>
-      <div class="player-no-winner player-display"> Game ends in draw.</div>
-      </br>
-      </br>
-      <div class="row">
-        <div class="reset span3">
-          <button type="button" class="btn btn-large btn-success">Try again!</button>
-        </div>
-        <div class="span1">
-          < %= button_to "Quit.", root_path, :class => 'btn btn-large btn-primary' %>
-        </div>
-      </div>
-    </div>
-    <div class="span4 offset1">
-      < %= render 'gameboard' %>
-    </div>
-    <div class="span1">
-    </div>
-  </div>
-</div>
-
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="span5 offset1">
-  <div class="coolrecipe">
-
-    <p id="notice">< %= notice %></p>
-
-<p>
-  <b>Game type:</b>
-  < %= @game.game_type_id %>
-</p>
-
-<p>
-  <b>Game result:</b>
-  < %= @game.game_result %>
-</p>
-
-</div>
-</div>
-
-< %= link_to 'Edit', edit_game_path(@game) %> |
-< %= link_to 'Back', games_path %>
- -->
