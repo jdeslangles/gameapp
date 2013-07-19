@@ -10,7 +10,7 @@ class TictactoeMovesController < ApplicationController
           result = @game.record_new_move params[:case], current_user
         end
       rescue GameFinished
-        flash[:notice] = "WOOOOOOOOOOONNNNN"
+        flash[:notice] = "And that's a WIN!!!"
       ensure
         redirect_to game_path params[:game_id]
       end

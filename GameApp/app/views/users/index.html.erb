@@ -9,7 +9,7 @@
 
             <table class="table">
               <tr>
-                <th>User picture</th>
+                <th>Avatar</th>
                 <th>Username</th>
                 <th>Email</th>
                 <th>Wins</th>
@@ -32,6 +32,9 @@
                 </td>
               </tr>
             </table>
+                <div class="quote span5">
+                    <%=user.bio %>
+                </div>
                 <div class="links"><%= link_to 'View', user, class:"btn btn-info btn-mini" %>
                 <% if can? :edit, user %>
                     <%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning btn-mini" %>

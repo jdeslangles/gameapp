@@ -28,7 +28,7 @@ class UsersController < ApplicationController
         UserMailer.registration_confirmation(@user).deliver
         @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
-        redirect_to root_url, notice: "You're now logged In and your avatar was successfully created - play time!"
+        redirect_to root_url, notice: "You're now logged in and your avatar was successfully created - play time!"
       else
       render 'new'
     end
