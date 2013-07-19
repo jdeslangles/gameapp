@@ -116,7 +116,7 @@ def self.create_for_players(game_player1_id, game_player2_id)
     else
       #Update Game table with draw
       self.game_result = "Draw"
-      self.playings..each do |playing|
+      self.playings.each do |playing|
         playing.update_attribute(:finish_position, 0)
       end
       raise GameFinished

@@ -3,10 +3,8 @@
 <br>
     <div class="row">
         <div class="span10 offset1" >
-
             <% @users.each do |user| %>
             <div class="coolrecipe" >
-
             <table class="table">
               <tr>
                 <th>Avatar</th>
@@ -33,21 +31,22 @@
               </tr>
             </table>
                 <div class="quote span5">
-                    <%=user.bio %>
+                <%=user.bio %>
                 </div>
-                <div class="links"><%= link_to 'View', user, class:"btn btn-info btn-mini" %>
-                <% if can? :edit, user %>
-                    <%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning btn-mini" %>
-                <% end %>
-                <% if can? :destroy, user %>
-                    <%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
-                <% end %>
+                <div class="links">
+                    <%= link_to 'View', user, class:"btn btn-info btn-mini" %>
+                    <% if can? :edit, user %>
+                        <%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning btn-mini" %>
+                    <% end %>
+                     <% if can? :destroy, user %>
+                        <%= link_to 'Destroy', user, class:"btn btn-danger btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                </div>
             </div>
-        </div>
-    <br>
-    <br>
-<% end %>
-</div>
+            <br>
+            <br>
+        <% end %>
+    </div>
 </div>
 <div class="links">
 <%= link_to 'New User', new_user_path, class:"btn btn-success btn-large" %>

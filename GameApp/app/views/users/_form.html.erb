@@ -1,56 +1,58 @@
   <div class="coolrecipe">
     <%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+      <% if @user.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+            <% for message in @user.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <div class="field">
+      <%= f.label :Avatar%>
+      <%= f.file_field :user_picture%>
     </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :Avatar%>
-    <%= f.file_field :user_picture%>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :user_gender %>
-    <%= f.text_field :user_gender %>
-  </div>
-   <div class="field">
-    <%= f.label :bio %>
-    <%= f.text_area :bio%>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="links">
-    <%= f.submit 'Submit', class: "btn btn-success btn-mini" %>
-    <%= link_to 'View', @user, class:"btn btn-info btn-mini" %>
-    <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
-  </div>
+    <div class="field">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :user_gender %>
+      <%= f.text_field :user_gender %>
+    </div>
+     <div class="field">
+      <%= f.label :bio %>
+      <%= f.text_area :bio%>
+    </div>
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="links">
+      <%= f.submit 'Submit', class: "btn btn-success btn-mini" %>
+      <% if current_user %>
+      <%= link_to 'View', @user, class:"btn btn-info btn-mini" %>
+      <% end %>
+      <%= link_to 'Back', users_path, class:"btn btn-inverse btn-mini" %>
+    </div>
 <% end %>
 </div>
 

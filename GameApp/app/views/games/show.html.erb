@@ -9,11 +9,13 @@
 
   <div class="row">
     <div class="span3">
-      <div class ="coolrecipe links">
+      <div class ="coolrecipe links match-div">
         <h3>Player 1</h3>
         <p class="links"><%=image_tag game_player_image(@game, 0), class: "img-circle img-match"%></p>
         <br>
-         <a href="mailto:<%= @game.users[0].email %>", class= "btn btn-danger btn-small">NUDGE</a>
+        <% unless current_user.id == @game.users[0].id %>
+           <a href="mailto:<%= @game.users[0].email %>?subject=Hey! It's your turn to play...&body=Come on, <%= @game.users[0].username%>. I'm waiting for you at www.gameapp.com/games/<%=@game[:id]%> !", class= "btn btn-danger btn-small">NUDGE</a>
+         <% end %>
       </div>
     </div>
 
@@ -43,19 +45,25 @@
         <br>
         <br>
         <br>
-        <p><u>INSTRUCTIONS:</u> <em>click on the "?", then refresh the page until Player 2 has made its move.</em></p>
+        <p><u>INSTRUCTIONS:</u> <em>click on the "?", then refresh the page until your opponent has made its move. The first player to line up three "X" or "O" wins!</em></p>
         <br>
-        <p>Did you know? You can send a note to your opponent to remind them it is their turn: just NUDGE them a little :)</p>
+        <p>Did you know? <em>You can send a note to your opponent to remind them it is their turn: just NUDGE them a little :)</em></p>
+      </div>
+      <div class="links">
+        <br>
+        <%= link_to 'Back to Homepage', root_path, class:"btn btn-inverse btn-large" %>
       </div>
     </div>
 
 
     <div class="span3 offset1">
-      <div class ="coolrecipe links">
+      <div class ="coolrecipe links match-div">
         <h3>Player 2</h3>
         <p class="links"><%=image_tag game_player_image(@game, 1), class: "img-circle img-match"%></p>
         <br>
-        <a href="mailto:<%= @game.users[1].email %>", class= "btn btn-danger btn-small">NUDGE</a>
+        <% unless current_user.id == @game.users[1].id %>
+          <a href="mailto:<%= @game.users[1].email %>?subject=Hey! It's your turn to play...&body=Come on, <%= @game.users[1].username%>. I'm waiting for you at www.gameapp.com/games/<%=@game[:id]%> !", class= "btn btn-danger btn-small">NUDGE</a>
+        <% end %>
       </div>
     </div>
 
