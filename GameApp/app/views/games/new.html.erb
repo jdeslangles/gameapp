@@ -23,7 +23,7 @@
           <img src="/assets/pvp.png" class="img-frontpage">
           <%= form_tag games_path, method: :post do %>
             <%=
-                select_tag "user_id", options_from_collection_for_select(User.all, "id", "username")
+                select_tag "user_id", options_from_collection_for_select(User.opponents(current_user), "id", "username")
               %>
           <br><br>
           <%= submit_tag "Challenge Player!", class:"btn btn-success btn-large" %>

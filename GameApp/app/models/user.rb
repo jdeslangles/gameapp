@@ -28,7 +28,9 @@ class User < ActiveRecord::Base
     user_object.id if user_object
   end
 
-
+  def self.opponents current_user
+    self.all.reject{ |u| u.id==User.computer_id || u.id==current_user.id }
+  end
 end
 
 

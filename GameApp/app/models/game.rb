@@ -16,6 +16,10 @@ def self.create_for_players(game_player1_id, game_player2_id)
     g
   end
 
+  def get_player player_position
+    playings.where(player_position: player_position).first.user
+  end
+
   def load_game
     @current_game=(params[:id])
   end
@@ -27,7 +31,6 @@ def self.create_for_players(game_player1_id, game_player2_id)
 
   def record_new_move square_case, user
     player_position = playings.where(user_id: user.id).first.player_position
-    puts "square_case #{square_case}"
     tictactoe = tictactoe_moves.create(player_position: player_position, move_square: square_case)
     if game_finished?
       game_over
